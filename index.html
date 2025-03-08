@@ -1,63 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clicker Fresh</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-        }
-
-        #counter {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        #clickButton {
-            padding: 20px 40px;
-            font-size: 24px;
-            background-color: #0088cc;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-
-        #clickButton:hover {
-            background-color: #006699;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ритмические диктанты</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/vexflow@4.2.3/build/cjs/vexflow.js"></script>
 </head>
 
 <body>
-    <div id="counter">0</div>
-    <button id="clickButton">Click Me!</button>
+    <div id="setupScreen">
+        <label for="difficulty">Уровень сложности:</label>
+        <select id="difficulty">
+            <option value="1">Уровень 1</option>
+        </select>
+        <label>Размер такта:</label>
+        <div class="time-signature">
+            <select id="timeNumerator">
+                <option value="2">2</option>
+                <option value="4">4</option>
+            </select>
+            <span>/</span>
+            <select id="timeDenominator">
+                <option value="4">4</option>
+            </select>
+        </div>
+        <label for="measures">Количество тактов:</label>
+        <input id="measures" type="number" min="1" max="2" value="1">
+        <button id="generate">Сгенерировать</button>
+        <button id="showStats">Статистика</button>
+        <div id="result"></div>
+    </div>
+    <div id="gameScreen" class="hidden">
+        <button id="reference">Прослушать ориентир</button>
+        <button id="play">Прослушать</button>
+        <div id="listenCount">Прослушиваний: 0/5</div>
+        <div class="duration-buttons">
+            <button class="duration-btn" data-duration="целая">Целая</button>
+            <button class="duration-btn" data-duration="половина">Половина</button>
+            <button class="duration-btn" data-duration="четверть">Четверть</button>
+        </div>
+        <div id="answerFields" class="answer-grid"></div>
+        <button id="submitAnswer">Отправить ответ</button>
+        <button id="back">Назад</button>
+    </div>
+    <div id="statsScreen" class="hidden">
+        <h2>Статистика сессии</h2>
+        <table id="statsTable">
+            <thead>
+                <tr>
+                    <th>Сложность</th>
+                    <th>Размер</th>
+                    <th>Такты</th>
+                    <th>Правильно</th>
+                    <th>Прослушиваний</th>
+                    <th>Ответ пользователя</th>
+                    <th>Правильный ответ</th>
+                </tr>
+            </thead>
+            <tbody id="statsBody"></tbody>
+        </table>
+        <button id="backToMenu">В главное меню</button>
+    </div>
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script>
-        let counter = 0;
-        const counterElement = document.getElementById('counter');
-        const clickButton = document.getElementById('clickButton');
-
-        // Инициализация Telegram Web App
-        window.Telegram.WebApp.ready();
-        window.Telegram.WebApp.expand();
-
-        // Обработка клика
-        clickButton.addEventListener('click', () => {
-            counter += 1;
-            counterElement.textContent = counter;
-        });
-    </script>
+    <script src="rhythm.js"></script>
+    <script src="ui.js"></script>
+    <script src="stats.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

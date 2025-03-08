@@ -1,0 +1,132 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    overscroll-behavior: none;
+    touch-action: manipulation;
+}
+
+select,
+input,
+button {
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background-color: #0088cc;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #006699;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+#result {
+    font-size: 18px;
+    margin-top: 20px;
+    text-align: center;
+    white-space: pre-wrap;
+}
+
+label {
+    font-size: 18px;
+    margin: 5px;
+}
+
+.time-signature {
+    display: flex;
+    align-items: center;
+}
+
+#setupScreen,
+#gameScreen,
+#statsScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#setupScreen.hidden,
+#gameScreen.hidden,
+#statsScreen.hidden {
+    display: none;
+}
+
+.answer-grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 5px;
+    margin: 10px 0;
+}
+
+.rhythm-canvas {
+    width: 200px;
+    height: 40px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.rhythm-canvas.active {
+    border-color: #0088cc;
+    box-shadow: 0 0 5px rgba(0, 136, 204, 0.5);
+}
+
+.duration-buttons {
+    display: flex;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.duration-btn {
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: #4CAF50;
+}
+
+.clear-btn {
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: #f44336;
+}
+
+#statsTable {
+    width: 90%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+#statsTable th,
+#statsTable td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+#statsTable th {
+    background-color: #0088cc;
+    color: white;
+}
+
+#statsTable tr.latest {
+    background-color: #b3e5fc;
+    font-weight: bold;
+}
